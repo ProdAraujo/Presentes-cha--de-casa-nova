@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contratação recente</title>
+<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADDUlEQVR4nO1Zy2oUQRRtfC1c+lj5+ABXQs+9TlYDVW1w4XZQdOnadWICBg1ksjdhIn6CqAsTQQX/QdEPMLoyiWiqZuhxHiW3cGZ0ppOu6q7uHmEuFAx00XNO1X2ce9vzpja1qaU2Va0ebXKYkQwXJMNnksMnyeG74PiLFv2WHD/qZwwXGgGW1ZJ3xCvamrOlC4LjquDwVXJUNktw+CIY1hoVPJ878P1rl88KBo8Fw5Yt8DEiDFuCY32/4p/JBbwI4JZksJcW+NhiuCvYlZuZAVe+f1xwfOIcOB9zrQ36L7fgr/snBcdXWYOXQxJb9J8uTz438HLoUm9V9dKJ1ATycBt54E1gPSV4uF0UeDkgUbqRCPxPDqclx52iCUgGe4lSLOX5wsHzQTysW4Gn6mhVpIKyat69YwxI7w3K5m7EsNUM/Ivmp89x1QZ8+/WmUt2uCmtLsfvDh/eU6nRU+90bJWdnbEjUjMCTyCKdYgW+bzEk+uD71rYgQXqLRGMsAa0qLVzhb0DaOh0VLi+Og19ejNzbtHC9BvMxloCWxBYBFj6YHwc2chOjJz/Ys3LfLpgDmDfx/+dWL40h4Qw8pwVP42+AGg/rFx9AotfVYN2AR6oJHwxcKLlUjiThCjzXayfehVI2KZrE6Knr2+ilBa8EwzB7AuTzkQTM6oRMSyCVC0UFbERgZ+pCMmkQR4Hv9aKDOCkJZhDEidLoIanSpE5Ip2nUtpAZ5HlnJBjMxRKgodPESgleAjMxx3A7sZg7JFWO3kSbxNxVM1ktGH42nuaRdE0kpw3yfJ+EDXipCcCKEfgJbWjCBiufMyagb4Fj3SrAMl3wyLO1H7PlU5PR1ONu4rkpzSqLJiAYVhOBH5DgsFGg66x5aY36UMHhRf4nD5uqUjmWmsBwuAtbObrNS2fD3ZEhbw6ZCdacnXyU0awyk+zE8FvqgLWamzJcpwLjwF1CyvOUtr28jaojyQ5j7fQv8G2SB9YVNgsjkUVDJ5rbkGanxoM6O/0BjySJ7vLg/Z9nc6QqJ+Iz69Sm5v3/9htwCyTCs1agAgAAAABJRU5ErkJggg==" type="image/x-icon">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    max-width: 90%;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 20px;
+    color: #484848;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-voltar:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-copy {
+    margin-top: 5px;
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .mensagemCopiado {
+    position: fixed;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: rgb(69, 148, 69);
+    color: #fff;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15pt;
+    display: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <p id="texto">
+    Olá, tudo bem? 
+    <br><br> 
+    Após análise, não localizamos a proposta em sistema. Caso a contratação seja recente, peço que aguarde o prazo de 07 a 10 dias úteis para emissão em sistema. Após a emissão, gentileza registrar nova solicitação para que possamos realizar o cancelamento.  
+    <br><br> 
+    Caso tenha ficado com alguma dúvida, entre em contato com a nossa Central de Serviços e Relacionamento. Teremos o maior prazer em atendê-lo(a)!
+  </p>
+
+  <button onclick="copiarTexto()">Copiar Texto</button>
+
+  <a href="https://prodaraujo.github.io/respostas-cancelamento/">
+    <button class="btn-voltar" id="btnVoltar">Voltar</button>
+  </a>
+
+  <div id="copiedMessage" class="mensagemCopiado">Texto copiado!</div>
+</div>
+
+<script>
+  function copiarTexto() {
+    var textoParaCopiar = document.getElementById("texto").innerText;
+
+    // Copiar texto usando a API do Clipboard
+    navigator.clipboard.writeText(textoParaCopiar)
+      .then(function() {
+        // Exibir a mensagem de copiado com a classe de animação
+        var copiedMessage = document.getElementById("copiedMessage");
+        copiedMessage.style.display = "inline";
+        copiedMessage.classList.add("fade-in");
+
+        // Ocultar a mensagem após a conclusão da animação
+        setTimeout(function() {
+          copiedMessage.classList.remove("fade-in");
+          setTimeout(function() {
+            copiedMessage.style.display = "none";
+          }, 500);
+        }, 2000);
+      })
+      .catch(function(err) {
+        console.error("Erro ao copiar o texto:", err);
+      });
+  }
+</script>
+
+</body>
+</html>

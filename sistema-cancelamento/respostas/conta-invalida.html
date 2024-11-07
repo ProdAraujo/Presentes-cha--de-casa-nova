@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conta inválida</title>
+<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADDUlEQVR4nO1Zy2oUQRRtfC1c+lj5+ABXQs+9TlYDVW1w4XZQdOnadWICBg1ksjdhIn6CqAsTQQX/QdEPMLoyiWiqZuhxHiW3cGZ0ppOu6q7uHmEuFAx00XNO1X2ce9vzpja1qaU2Va0ebXKYkQwXJMNnksMnyeG74PiLFv2WHD/qZwwXGgGW1ZJ3xCvamrOlC4LjquDwVXJUNktw+CIY1hoVPJ878P1rl88KBo8Fw5Yt8DEiDFuCY32/4p/JBbwI4JZksJcW+NhiuCvYlZuZAVe+f1xwfOIcOB9zrQ36L7fgr/snBcdXWYOXQxJb9J8uTz438HLoUm9V9dKJ1ATycBt54E1gPSV4uF0UeDkgUbqRCPxPDqclx52iCUgGe4lSLOX5wsHzQTysW4Gn6mhVpIKyat69YwxI7w3K5m7EsNUM/Ivmp89x1QZ8+/WmUt2uCmtLsfvDh/eU6nRU+90bJWdnbEjUjMCTyCKdYgW+bzEk+uD71rYgQXqLRGMsAa0qLVzhb0DaOh0VLi+Og19ejNzbtHC9BvMxloCWxBYBFj6YHwc2chOjJz/Ys3LfLpgDmDfx/+dWL40h4Qw8pwVP42+AGg/rFx9AotfVYN2AR6oJHwxcKLlUjiThCjzXayfehVI2KZrE6Knr2+ilBa8EwzB7AuTzkQTM6oRMSyCVC0UFbERgZ+pCMmkQR4Hv9aKDOCkJZhDEidLoIanSpE5Ip2nUtpAZ5HlnJBjMxRKgodPESgleAjMxx3A7sZg7JFWO3kSbxNxVM1ktGH42nuaRdE0kpw3yfJ+EDXipCcCKEfgJbWjCBiufMyagb4Fj3SrAMl3wyLO1H7PlU5PR1ONu4rkpzSqLJiAYVhOBH5DgsFGg66x5aY36UMHhRf4nD5uqUjmWmsBwuAtbObrNS2fD3ZEhbw6ZCdacnXyU0awyk+zE8FvqgLWamzJcpwLjwF1CyvOUtr28jaojyQ5j7fQv8G2SB9YVNgsjkUVDJ5rbkGanxoM6O/0BjySJ7vLg/Z9nc6QqJ+Iz69Sm5v3/9htwCyTCs1agAgAAAABJRU5ErkJggg==" type="image/x-icon">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Reduzindo a largura do contêiner */
+    max-width: 90%;
+  }
+  h1 {
+    font-size: 20px; /* Reduzindo o tamanho do título */
+    margin-bottom: 20px;
+    margin-top: 0px;
+    text-align: center;
+    color: #484848;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px; /* Reduzindo o tamanho do texto das etiquetas */
+  }
+  input, textarea {
+    width: 100%;
+    padding: 8px; /* Reduzindo o preenchimento dos campos de entrada */
+    margin-bottom: 10px; /* Reduzindo a margem inferior dos campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Reduzindo o tamanho da fonte dos campos de entrada */
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px; /* Reduzindo o tamanho do texto do botão */
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Estilos do botão de voltar */
+  #btnVoltar {
+    position:static;
+    margin-top: 20px;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+  #btnVoltar:hover {
+      background-color: #0056b3;
+  }
+
+  .checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+  .checkbox-input {
+    margin-right: 8px; /* Espaçamento entre a checkbox e o texto do label */
+    margin-top: 3px;
+    margin-bottom: 2px;
+}
+
+  #textoResultado {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Reduzindo a margem inferior do texto de resultado */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    height: 100px; /* Reduzindo a altura da área de texto de resultado */
+    font-size: 14px; /* Reduzindo o tamanho da fonte do texto de resultado */
+  }
+  .btn-copy {
+    margin-top: 5px; /* Reduzindo a margem superior do botão de cópia */
+    margin-bottom: 0; /* Removendo a margem inferior do botão de cópia */
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .mensagemCopiado {
+    position: fixed;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: rgb(69, 148, 69);
+    color: #fff;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15pt;
+    display: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Conta inválida</h1>
+
+  <label for="certificado">Certificado:</label>
+  <input type="text" id="certificado" placeholder="Digite o número do certificado">
+
+  <label for="produto">Produto:</label>
+  <input type="text" id="produto" placeholder="Digite o nome do produto">
+
+  <label for="dataCancelamento">Data de Cancelamento:</label>
+  <input type="date" id="dataCancelamento">
+
+  <label for="valorDevido">Valor Devido:</label>
+  <input type="text" id="valorDevido" placeholder="Digite o valor devido">
+
+  <label class="checkbox-label" for="proporcionalCheckbox">
+    <input type="checkbox" id="proporcionalCheckbox" class="checkbox-input">
+    Proporcional
+  </label>
+
+  <button onclick="gerarTexto()">Gerar Texto</button>
+
+  <textarea id="textoResultado" placeholder="Aqui vai o texto gerado" readonly></textarea>
+
+  <button class="btn-copy" onclick="copiarTexto()">Copiar Texto</button>
+
+  <a href="https://prodaraujo.github.io/respostas-cancelamento/"><button class="btnVoltar" id="btnVoltar">Voltar</button></a>
+
+</div>
+
+<div id="copiedMessage" class="mensagemCopiado">Texto copiado!</div>
+
+<script>
+
+  function preencherDataCancelamento() {
+    var dataCancelamentoInput = document.getElementById("dataCancelamento");
+    var dataAtual = new Date();
+    var dia = String(dataAtual.getDate()).padStart(2, '0');
+    var mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+    var ano = dataAtual.getFullYear();
+    var dataAtualFormatada = ano + '-' + mes + '-' + dia;
+    dataCancelamentoInput.value = dataAtualFormatada;
+  }
+
+  preencherDataCancelamento();
+
+  function gerarTexto() {
+    var certificado = document.getElementById("certificado").value;
+    var produto = document.getElementById("produto").value;
+    var dataCancelamentoInput = document.getElementById("dataCancelamento").value;
+    var dataCancelamento = new Date(dataCancelamentoInput + "T00:00:00");
+    var valorDevido = document.getElementById("valorDevido").value;
+    var proporcionalCheckbox = document.getElementById("proporcionalCheckbox").checked;
+
+    var dia = String(dataCancelamento.getDate()).padStart(2, '0');
+    var mes = String(dataCancelamento.getMonth() + 1).padStart(2, '0');
+    var ano = dataCancelamento.getFullYear();
+    var dataCancelamentoFormatada = dia + '/' + mes + '/' + ano;
+
+    var texto = "Olá, tudo bem?\n\n";
+    texto += "O seu seguro com certificado " + certificado + ", do produto " + produto + " foi cancelado.\n\n";
+    texto += "A efetivação do cancelamento se deu em " + dataCancelamentoFormatada + ". Informamos que o titular tem uma restituição";
+    if (proporcionalCheckbox) {
+      texto += " proporcional";
+    }
+    texto += " no valor de R$ " + valorDevido + " porém é necessário informar uma conta em sua titularidade podendo ser corrente ou poupança (Caixa Econômica Federal) ou somente corrente em caso de outros bancos. Em caso de conta conjunta/ terceiros faz-se necessário o nome, CPF, data de nascimento e o endereço completo do 1º titular da conta.\n\n"
+    texto += "Caso tenha ficado com alguma dúvida, entre em contato com a nossa Central de Serviços e Relacionamento. Teremos o maior prazer em atendê-lo(a)!";
+
+    document.getElementById("textoResultado").value = texto;
+  }
+
+  function copiarTexto() {
+    var textoResultado = document.getElementById("textoResultado");
+    textoResultado.select();
+    textoResultado.setSelectionRange(0, 99999); /* Para dispositivos móveis */
+    document.execCommand("copy");
+
+    // Exibir a mensagem de copiado com a classe de animação
+    var copiedMessage = document.getElementById("copiedMessage");
+    copiedMessage.style.display = "inline"; // Definindo o estilo de exibição como block
+    copiedMessage.classList.add("fade-in"); // Adicionando a classe de animação
+
+    // Ocultar a mensagem após a conclusão da animação
+    setTimeout(function() {
+        copiedMessage.classList.remove("fade-in");
+        setTimeout(function() {
+            copiedMessage.style.display = "none";
+        }, 500); // Tempo da animação em milissegundos
+      }, 500); // Tempo da animação em milissegundos
+
+    // Limpar os campos de entrada após copiar o texto
+    document.getElementById("certificado").value = "";
+    document.getElementById("produto").value = "";
+    document.getElementById("valorDevido").value = "";    
+
+    // Desmarcar a checkbox
+    document.getElementById("proporcionalCheckbox").checked = false;
+
+    // Limpar campo da resposta
+    document.getElementById("textoResultado").value = "";
+
+    // Preencher a data de cancelamento com a data atual
+    preencherDataCancelamento();
+  } 
+</script>
+</body>
+</html>

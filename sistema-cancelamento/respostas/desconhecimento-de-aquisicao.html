@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desconhecimento de aquisição</title>
+<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADDUlEQVR4nO1Zy2oUQRRtfC1c+lj5+ABXQs+9TlYDVW1w4XZQdOnadWICBg1ksjdhIn6CqAsTQQX/QdEPMLoyiWiqZuhxHiW3cGZ0ppOu6q7uHmEuFAx00XNO1X2ce9vzpja1qaU2Va0ebXKYkQwXJMNnksMnyeG74PiLFv2WHD/qZwwXGgGW1ZJ3xCvamrOlC4LjquDwVXJUNktw+CIY1hoVPJ878P1rl88KBo8Fw5Yt8DEiDFuCY32/4p/JBbwI4JZksJcW+NhiuCvYlZuZAVe+f1xwfOIcOB9zrQ36L7fgr/snBcdXWYOXQxJb9J8uTz438HLoUm9V9dKJ1ATycBt54E1gPSV4uF0UeDkgUbqRCPxPDqclx52iCUgGe4lSLOX5wsHzQTysW4Gn6mhVpIKyat69YwxI7w3K5m7EsNUM/Ivmp89x1QZ8+/WmUt2uCmtLsfvDh/eU6nRU+90bJWdnbEjUjMCTyCKdYgW+bzEk+uD71rYgQXqLRGMsAa0qLVzhb0DaOh0VLi+Og19ejNzbtHC9BvMxloCWxBYBFj6YHwc2chOjJz/Ys3LfLpgDmDfx/+dWL40h4Qw8pwVP42+AGg/rFx9AotfVYN2AR6oJHwxcKLlUjiThCjzXayfehVI2KZrE6Knr2+ilBa8EwzB7AuTzkQTM6oRMSyCVC0UFbERgZ+pCMmkQR4Hv9aKDOCkJZhDEidLoIanSpE5Ip2nUtpAZ5HlnJBjMxRKgodPESgleAjMxx3A7sZg7JFWO3kSbxNxVM1ktGH42nuaRdE0kpw3yfJ+EDXipCcCKEfgJbWjCBiufMyagb4Fj3SrAMl3wyLO1H7PlU5PR1ONu4rkpzSqLJiAYVhOBH5DgsFGg66x5aY36UMHhRf4nD5uqUjmWmsBwuAtbObrNS2fD3ZEhbw6ZCdacnXyU0awyk+zE8FvqgLWamzJcpwLjwF1CyvOUtr28jaojyQ5j7fQv8G2SB9YVNgsjkUVDJ5rbkGanxoM6O/0BjySJ7vLg/Z9nc6QqJ+Iz69Sm5v3/9htwCyTCs1agAgAAAABJRU5ErkJggg==" type="image/x-icon">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Reduzindo a largura do contêiner */
+    max-width: 90%;
+  }
+  h1 {
+    font-size: 20px; /* Reduzindo o tamanho do título */
+    margin-bottom: 20px;
+    margin-top: 0px;
+    text-align: center;
+    color: #484848;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px; /* Reduzindo o tamanho do texto das etiquetas */
+  }
+  input, textarea {
+    width: 100%;
+    padding: 8px; /* Reduzindo o preenchimento dos campos de entrada */
+    margin-bottom: 10px; /* Reduzindo a margem inferior dos campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Reduzindo o tamanho da fonte dos campos de entrada */
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px; /* Reduzindo o tamanho do texto do botão */
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Estilos do botão de voltar */
+  #btnVoltar {
+    position:static;
+    margin-top: 20px;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+  #btnVoltar:hover {
+      background-color: #0056b3;
+  }
+
+  .checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+  .checkbox-input {
+    margin-right: 8px; /* Espaçamento entre a checkbox e o texto do label */
+    margin-top: 3px;
+    margin-bottom: 2px;
+}
+
+.checkbox-label1 {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+  .checkbox-input1 {
+    margin-right: 8px; /* Espaçamento entre a checkbox e o texto do label */
+    margin-top: 3px;
+    margin-bottom: 2px;
+}
+
+  .hidden {
+    display: none;
+  }
+
+  #textoResultado {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Reduzindo a margem inferior do texto de resultado */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    height: 100px; /* Reduzindo a altura da área de texto de resultado */
+    font-size: 14px; /* Reduzindo o tamanho da fonte do texto de resultado */
+  }
+  .btn-copy {
+    margin-top: 5px; /* Reduzindo a margem superior do botão de cópia */
+    margin-bottom: 0; /* Removendo a margem inferior do botão de cópia */
+  }
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .mensagemCopiado {
+    position: fixed;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: rgb(69, 148, 69);
+    color: #fff;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15pt;
+    display: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Desconhecimento de aquisição</h1>
+
+  <label for="certificado">Certificado:</label>
+  <input type="text" id="certificado" placeholder="Digite o número do certificado">
+
+  <label for="produto">Produto:</label>
+  <input type="text" id="produto" placeholder="Digite o nome do produto">
+
+  <label for="dataCancelamento">Data de Cancelamento:</label>
+  <input type="date" id="dataCancelamento">
+
+  <label for="valorDevido">Valor Devido:</label>
+  <input type="text" id="valorDevido" placeholder="Digite o valor devido">
+
+  <label class="checkbox-label" for="pagoCheckbox">
+    <input type="checkbox" id="pagoCheckbox" class="checkbox-input" onclick="pago()">
+    Pago
+  </label>
+
+  <div id="pagoCondicao" class="hidden">
+    <label for="dataPago">Data que foi pago:</label>
+    <input type="date" id="dataPago">
+  </div>
+
+  <label class="checkbox-label" for="proporcionalCheckbox">
+    <input type="checkbox" id="proporcionalCheckbox" class="checkbox-input">
+    Proporcional
+  </label>
+  
+  <label for="banco">Banco:</label>
+  <input type="number" id="banco">
+
+  <label for="agencia">Agência:</label>
+  <input type="text" id="agencia" placeholder="Digite o número da agência">
+
+  <label for="conta">Conta:</label>
+  <input type="text" id="conta" placeholder="Digite o número da conta">
+
+  <label class="checkbox-label1" for="programacaoCheckbox">
+    <input type="checkbox" id="programacaoCheckbox" class="checkbox-input1">
+    Programação
+  </label>
+
+  <div id="programacaoCondicao" class="hidden">
+    <label for="parcela">Parcela:</label>
+    <input type="number" id="parcela" placeholder="Digite o número da parcela">
+
+    <label for="dataProgramacao">Data da programação:</label>
+    <input type="date" id="dataProgramacao">
+
+    <label for="valorProgramacao">Valor da programação:</label>
+    <input type="text" id="valorProgramacao" placeholder="Digite o valor da programação">
+  </div>  
+
+  <label for="dataContratacao">Data de contratação:</label>
+  <input type="date" id="dataContratacao">
+
+  <label for="agenciaContratacao">Agência de contratação:</label>
+  <input type="text" id="agenciaContratacao" placeholder="Digite o número da agência">
+
+  <label for="telefone">Telefone</label>
+  <input type="tel" id="telefone" placeholder="Digite o número de telefone">
+
+  <button onclick="gerarTexto()">Gerar Texto</button>
+
+  <textarea id="textoResultado" readonly placeholder="Aqui vai o texto gerado"></textarea>
+
+  <button class="btn-copy" onclick="copiarTexto()">Copiar Texto</button>
+
+  <a href="https://prodaraujo.github.io/respostas-cancelamento/"><button class="btnVoltar" id="btnVoltar">Voltar</button></a>
+
+  <div id="copiedMessage" class="mensagemCopiado">Texto copiado!</div>
+
+</div>
+
+<script>
+  function programacao(){
+      document.getElementById("programacaoCheckbox").addEventListener("change", function() {
+            var conteudoDiv = document.getElementById("programacaoCondicao");
+            if (this.checked) {
+                conteudoDiv.classList.remove("hidden");
+            } else {
+                conteudoDiv.classList.add("hidden");
+            }  
+        });
+      };
+
+  programacao();      
+
+  function pago() {
+    document.getElementById("pagoCheckbox").addEventListener("change", function() {
+          var conteudoDiv1 = document.getElementById("pagoCondicao");
+          if (this.checked) {
+              conteudoDiv1.classList.remove("hidden");
+          } else {
+              conteudoDiv1.classList.add("hidden");
+          }  
+      });
+    };  
+
+  function preencherDataCancelamento() {
+    var dataCancelamentoInput = document.getElementById("dataCancelamento");
+    var dataAtual = new Date();
+    var dia = String(dataAtual.getDate()).padStart(2, '0');
+    var mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+    var ano = dataAtual.getFullYear();
+    var dataAtualFormatada = ano + '-' + mes + '-' + dia;
+    dataCancelamentoInput.value = dataAtualFormatada;
+  }
+
+  preencherDataCancelamento();
+
+  function preencherBanco() {
+    var bancoInput = document.getElementById("banco");
+    bancoInput.value = 104;
+  }
+
+  preencherBanco();
+
+  function gerarTexto() {
+    var certificado = document.getElementById("certificado").value;
+    var produto = document.getElementById("produto").value;
+    var dataCancelamentoInput = document.getElementById("dataCancelamento").value;
+    var dataCancelamento = new Date(dataCancelamentoInput + "T00:00:00");
+    var valorDevido = document.getElementById("valorDevido").value;
+    var banco = document.getElementById("banco").value;
+    var agencia = document.getElementById("agencia").value;
+    var conta = document.getElementById("conta").value;
+    var proporcionalCheckbox = document.getElementById("proporcionalCheckbox").checked;
+    var pagoCheckbox = document.getElementById("pagoCheckbox").checked;
+    var programacaoCheckbox = document.getElementById("programacaoCheckbox").checked;
+    var parcela = document.getElementById("parcela").value;
+    var dataPagoInput = document.getElementById("dataPago").value;
+    var dataPago = new Date(dataPagoInput + "T00:00:00");    
+    var dataProgramacaoInput = document.getElementById("dataProgramacao").value;
+    var dataProgramacao = new Date(dataProgramacaoInput + "T00:00:00");
+    var valorProgramacao = document.getElementById("valorProgramacao").value;
+    var dataContratacaoInput = document.getElementById("dataContratacao").value;
+    var dataContratacao = new Date(dataContratacaoInput + "T00:00:00");
+    var agenciaContratacao = document.getElementById("agenciaContratacao").value;
+    var telefone = document.getElementById("telefone").value;
+
+    var dia = String(dataCancelamento.getDate()).padStart(2, '0');
+    var mes = String(dataCancelamento.getMonth() + 1).padStart(2, '0');
+    var ano = dataCancelamento.getFullYear();
+    var dataCancelamentoFormatada = dia + '/' + mes + '/' + ano;
+
+    var dia = String(dataPago.getDate()).padStart(2, '0');
+    var mes = String(dataPago.getMonth() + 1).padStart(2, '0');
+    var ano = dataPago.getFullYear();
+    var dataPagoFormatada = dia + '/' + mes + '/' + ano;
+
+    var dia = String(dataProgramacao.getDate()).padStart(2, '0');
+    var mes = String(dataProgramacao.getMonth() + 1).padStart(2, '0');
+    var ano = dataProgramacao.getFullYear();
+    var dataProgramacaoFormatada = dia + '/' + mes + '/' + ano;
+
+    var dataAtual = new Date();
+    var diaAtual = String(dataAtual.getDate()).padStart(2, '0');
+    var mesAtual = String(dataAtual.getMonth() + 1).padStart(2, '0');
+    var anoAtual = dataAtual.getFullYear();
+    var dataAtualFormatada = diaAtual + '/' + mesAtual + '/' + anoAtual;
+
+    var dia = String(dataContratacao.getDate()).padStart(2, '0');
+    var mes = String(dataContratacao.getMonth() + 1).padStart(2, '0');
+    var ano = dataContratacao.getFullYear();
+    var dataContratacaoFormatada = dia + '/' + mes + '/' + ano;
+
+
+    var texto = "Olá, tudo bem?\n\n";
+    texto += "O seu seguro com certificado " + certificado + ", do produto " + produto;
+    
+    if (dataAtualFormatada==dataCancelamentoFormatada) {
+      texto += " foi cancelado. A efetivação do cancelamento se deu em " + dataCancelamentoFormatada + ", sendo devido o pagamento da restituição";
+    }
+      else if (dataAtualFormatada!==dataCancelamentoFormatada) {
+        texto += " encontra-se cancelado desde " + dataCancelamentoFormatada + ", sendo devido o pagamento da restituição";
+      };
+
+    if (proporcionalCheckbox) {
+      texto += " proporcional";
+    };
+
+    texto += " no valor de R$ " + valorDevido + ". ";
+    texto += "O crédito da restituição";
+    
+    if (pagoCheckbox){
+      texto += " ocorreu em " + dataPagoFormatada + " ";
+    }
+      else {
+        texto += " está previsto para ocorrer em até 3 dias úteis, ";
+      }
+    
+    texto += "no Banco "+ banco +", agência " + agencia + ", conta " + conta + ".\n\n";
+    
+    if (programacaoCheckbox) {
+    texto += "A parcela nº "+ parcela +" já está com débito programado para "+ dataProgramacaoFormatada +" e não foi possível a inibição. Mas não se preocupe! Se a cobrança for confirmada a restituição integral no valor de R$ "+ valorProgramacao +", será efetuada em até 10 dias nos dados bancários cadastrados.\n\n"
+    };
+    
+    texto += "A contratação do seguro ocorreu em "+ dataContratacaoFormatada +", junto à AG "+ agenciaContratacao +", mediante assinatura eletrônica, via SMS por meio do telefone "+ telefone +". A assinatura da proposta caracteriza a anuência para a emissão do seguro e a concordância com as Condições Gerais, onde há a informação sobre a cobrança do produto. Assim, considerando a proposta de adesão assinada, não será realizado o ressarcimento dos valores pagos no período de vigência do seguro.\n\n";
+    texto += "Caso tenha ficado com alguma dúvida, entre em contato com a nossa Central de Serviços e Relacionamento. Teremos o maior prazer em atendê-lo(a)!";
+
+    document.getElementById("textoResultado").value = texto;
+  }
+
+  function copiarTexto() {
+    var textoResultado = document.getElementById("textoResultado");
+    textoResultado.select();
+    textoResultado.setSelectionRange(0, 99999); /* Para dispositivos móveis */
+    document.execCommand("copy");
+    
+    // Exibir a mensagem de copiado com a classe de animação
+    var copiedMessage = document.getElementById("copiedMessage");
+    copiedMessage.style.display = "inline";
+    copiedMessage.classList.add("fade-in");
+
+    // Ocultar a mensagem após a conclusão da animação
+    setTimeout(function() {
+        copiedMessage.classList.remove("fade-in");
+        setTimeout(function() {
+            copiedMessage.style.display = "none";
+        }, 500); // Tempo da animação em milissegundos
+    }, 500); // Tempo da animação em milissegundos
+
+    // Limpar os campos de entrada após copiar o texto
+    document.getElementById("certificado").value = "";
+    document.getElementById("produto").value = "";
+    document.getElementById("valorDevido").value = "";
+    document.getElementById("agencia").value = "";
+    document.getElementById("conta").value = "";
+    document.getElementById("dataContratacao").value = "";
+    document.getElementById("agenciaContratacao").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("parcela").value = "";
+    document.getElementById("dataProgramacao").value = "";
+    document.getElementById("valorProgramacao").value = "";
+
+
+    // Desmarcar a checkbox
+    document.getElementById("proporcionalCheckbox").checked = false;
+    document.getElementById("programacaoCheckbox").checked = false;
+    document.getElementById("pagoCheckbox").checked = false;
+
+    var pagoCondicao = document.getElementById("pagoCondicao");
+    var pagoCheckbox = document.getElementById("pagoCheckbox").checked;
+    var programacaoCondicao = document.getElementById("programacaoCondicao");
+    var programacaoCheckbox = document.getElementById("programacaoCheckbox").checked;
+
+    if (pagoCheckbox==false) {
+        var conteudoDiv = document.getElementById("pagoCondicao");
+          if (this.checked) {
+              conteudoDiv.classList.remove("hidden");
+          } else {
+              conteudoDiv.classList.add("hidden");
+          }  
+      }; 
+  
+
+    if (programacaoCheckbox==false) {
+        var conteudoDiv1 = document.getElementById("programacaoCondicao");
+          if (this.checked) {
+              conteudoDiv1.classList.remove("hidden");
+          } else {
+              conteudoDiv1.classList.add("hidden");
+          }  
+      }; 
+
+      // Limpar campo da resposta
+      document.getElementById("textoResultado").value = "";
+
+      // Preencher a data de cancelamento com a data atual
+      preencherDataCancelamento();
+
+      // Preencher o banco por padrão com o código 104
+      preencherBanco();
+
+      pago();
+  }
+</script>
+</body>
+</html>

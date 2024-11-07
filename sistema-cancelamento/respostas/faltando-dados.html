@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faltando dados</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADDUlEQVR4nO1Zy2oUQRRtfC1c+lj5+ABXQs+9TlYDVW1w4XZQdOnadWICBg1ksjdhIn6CqAsTQQX/QdEPMLoyiWiqZuhxHiW3cGZ0ppOu6q7uHmEuFAx00XNO1X2ce9vzpja1qaU2Va0ebXKYkQwXJMNnksMnyeG74PiLFv2WHD/qZwwXGgGW1ZJ3xCvamrOlC4LjquDwVXJUNktw+CIY1hoVPJ878P1rl88KBo8Fw5Yt8DEiDFuCY32/4p/JBbwI4JZksJcW+NhiuCvYlZuZAVe+f1xwfOIcOB9zrQ36L7fgr/snBcdXWYOXQxJb9J8uTz438HLoUm9V9dKJ1ATycBt54E1gPSV4uF0UeDkgUbqRCPxPDqclx52iCUgGe4lSLOX5wsHzQTysW4Gn6mhVpIKyat69YwxI7w3K5m7EsNUM/Ivmp89x1QZ8+/WmUt2uCmtLsfvDh/eU6nRU+90bJWdnbEjUjMCTyCKdYgW+bzEk+uD71rYgQXqLRGMsAa0qLVzhb0DaOh0VLi+Og19ejNzbtHC9BvMxloCWxBYBFj6YHwc2chOjJz/Ys3LfLpgDmDfx/+dWL40h4Qw8pwVP42+AGg/rFx9AotfVYN2AR6oJHwxcKLlUjiThCjzXayfehVI2KZrE6Knr2+ilBa8EwzB7AuTzkQTM6oRMSyCVC0UFbERgZ+pCMmkQR4Hv9aKDOCkJZhDEidLoIanSpE5Ip2nUtpAZ5HlnJBjMxRKgodPESgleAjMxx3A7sZg7JFWO3kSbxNxVM1ktGH42nuaRdE0kpw3yfJ+EDXipCcCKEfgJbWjCBiufMyagb4Fj3SrAMl3wyLO1H7PlU5PR1ONu4rkpzSqLJiAYVhOBH5DgsFGg66x5aY36UMHhRf4nD5uqUjmWmsBwuAtbObrNS2fD3ZEhbw6ZCdacnXyU0awyk+zE8FvqgLWamzJcpwLjwF1CyvOUtr28jaojyQ5j7fQv8G2SB9YVNgsjkUVDJ5rbkGanxoM6O/0BjySJ7vLg/Z9nc6QqJ+Iz69Sm5v3/9htwCyTCs1agAgAAAABJRU5ErkJggg==" />
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0 0 20px;
+  }
+
+  p {
+    color: #484848;
+    font-size: 16px;
+    margin: 0 0 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-voltar:hover {
+    background-color: #0056b3;
+  }
+
+  .mensagemCopiado {
+    position: fixed;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: rgb(69, 148, 69);
+    color: #fff;
+    border-radius: 2px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15pt;
+    display: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <p id="textoResultado">
+    Olá, tudo bem? <br><br>
+    Os dados informados nesta ocorrência não foram suficientes para atender à solicitação. Por gentileza, envie os dados do seguro (valor, certificado, tipo de produto e conta que está sendo debitado), bem como o comprovante de pagamento (bancário), através de uma agência da Caixa Econômica Federal.<br><br>
+    Caso tenha alguma dúvida, entre em contato com a nossa Central de Serviços e Relacionamento. Teremos o maior prazer em atendê-lo(a)!
+  </p>
+
+  <button onclick="copiarTexto()" aria-label="Copiar Texto">Copiar Texto</button>
+
+    <a href="https://prodaraujo.github.io/respostas-cancelamento/" class="btn-voltar"><button>Voltar</button></a>
+ 
+ 
+  <div id="copiedMessage" class="mensagemCopiado">Texto copiado!</div>
+  
+</div>
+
+<script>
+function copiarTexto() {
+  const texto = document.getElementById("textoResultado").innerText;
+
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      const copiedMessage = document.getElementById("copiedMessage");
+      copiedMessage.style.display = "block";
+      copiedMessage.style.opacity = "1";
+
+      setTimeout(() => {
+        copiedMessage.style.opacity = "0";
+        setTimeout(() => {
+          copiedMessage.style.display = "none";
+        }, 500); // Tempo para fade-out
+      }, 2000); // Duração da mensagem
+    })
+    .catch((err) => {
+      console.error("Erro ao copiar o texto: ", err);
+    });
+}
+</script>
+
+</body>
+</html>
